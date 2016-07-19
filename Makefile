@@ -1,2 +1,2 @@
 test:
-	@python *.py
+	python *.py
