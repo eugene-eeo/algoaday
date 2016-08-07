@@ -1,17 +1,16 @@
-import string
+from collections import defaultdict
 
 
 # creates a 'skip-hash': how many characters
 # to skip by when you encounter a particular
 # character.
 def preprocess(pattern):
-    T = {}
     length = len(pattern)
-    for i in string.ascii_lowercase:
-        T[i] = length
+    T = defaultdict(lambda: length)
 
     for i in range(0, length - 1):
         T[pattern[i]] = length - 1 - i
+
     return T
 
 
