@@ -1,8 +1,6 @@
+from random import random
 from fnvhash import fnv0_32
-
-
-def mean(xs):
-    return sum(xs) // float(len(xs))
+import string
 
 
 def split_bits(number, n):
@@ -22,18 +20,15 @@ class LogLog:
         head = int(head, base=2)
         self.buckets[head] = max(
             self.buckets[head],
-            len(tail) - len(tail.rstrip('1')) + 1,
+            len(tail) - len(tail.lstrip('1')) + 1,
             )
 
     def cardinality(self):
-        xs = [k-1 for k in self.buckets if k > 0]
-        if not xs:
-            return 0
-        return 2**mean(xs)
+        return sum(2 ** (m-1) if m > 0 else 0 for m in self.buckets)
 
 
 if __name__ == '__main__':
     mset = LogLog()
-    mset.insert(b'abc')
-    mset.insert(b'jkl')
-    assert mset.cardinality() == 2.0
+    for char in string.ascii_letters:
+        mset.insert(char.encode())
+    assert mset.cardinality() == len(string.ascii_letters)
