@@ -41,4 +41,5 @@ def search(needle, haystack):
 if __name__ == '__main__':
     assert search('abc', 'defabc') == 3
     assert search('def', 'defabc') == 0
+    assert search('abba', 'abbacadabra') == 0
     assert search('a', 'b') == -1
