@@ -19,15 +19,15 @@ class BloomFilter(object):
             for algo in self.algorithms
             )
 
-    def add(self, item):
+    def insert(self, item):
         for algo in self.algorithms:
             self.array[algo(item) % self.space] = 1
 
 
 if __name__ == '__main__':
     bf = BloomFilter()
-    bf.add(b'abc')
-    bf.add(b'def')
+    bf.insert(b'abc')
+    bf.insert(b'def')
 
     assert b'abc' in bf
     assert b'def' in bf

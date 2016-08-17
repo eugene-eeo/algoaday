@@ -16,7 +16,7 @@ class CountMinSketch:
         for _ in range(len(algos)):
             self.array.append([0] * width)
 
-    def add(self, elem):
+    def insert(self, elem):
         for index, algo in enumerate(self.algos):
             row = self.array[index]
             row[algo(elem) % self.width] += 1
@@ -31,9 +31,9 @@ class CountMinSketch:
 
 if __name__ == '__main__':
     cms = CountMinSketch(20)
-    cms.add(b'abc')
-    cms.add(b'def')
-    cms.add(b'def')
+    cms.insert(b'abc')
+    cms.insert(b'def')
+    cms.insert(b'def')
 
     assert cms.count(b'abc') == 1
     assert cms.count(b'def') == 2
