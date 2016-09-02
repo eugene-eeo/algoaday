@@ -11,13 +11,13 @@ class Block:
 class HashList:
     def __init__(self, blocks):
         self.blocks = tuple(blocks)
-        self.hash = sha256(b''.join(b.hash for b in self.blocks))
+        self.hashes = tuple(b.hash for b in self.blocks)
 
     def extend(self, blocks):
         return HashList(chain(self, blocks))
 
     def __eq__(self, other):
-        return self.hash == other.hash
+        return self.hashes == other.hashes
 
 
 if __name__ == '__main__':
