@@ -14,7 +14,7 @@ class HashList:
         self.hashes = tuple(b.hash for b in self.blocks)
 
     def extend(self, blocks):
-        return HashList(chain(self, blocks))
+        return HashList(chain(self.blocks, blocks))
 
     def __eq__(self, other):
         return self.hashes == other.hashes

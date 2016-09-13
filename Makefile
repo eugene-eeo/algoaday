@@ -1,2 +1,8 @@
 test:
-	python *.py
+	python ./bad_loglog.py
+	python ./bloom_filter.py
+	python ./countminsketch.py
+	python ./crc.py
+	python ./hashlist.py
+	python ./reservoir_sampling.py
+	python ./strstr.py
