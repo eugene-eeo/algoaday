@@ -53,12 +53,10 @@ def lvdist2(a, b):
 
 def rsg():
     def getstr(s):
-        return ''.join([
-            choice(s) for _ in range(randint(1, 10))
-        ])
+        return ''.join(choice(s) for _ in range(randint(1, 10)))
 
     chars = string.ascii_letters
-    for _ in range(20):
+    for _ in range(10):
         yield getstr(chars), getstr(chars)
 
 
