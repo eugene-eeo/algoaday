@@ -41,6 +41,8 @@ if __name__ == '__main__':
     tree = Node.from_sequence(words)
     for n in range(1, 5):
         for word in words:
-            assert set(tree.search(word, n)) == set([
+            res = list(tree.search(word, n))
+            assert len(res) == len(set(res))
+            assert set(res) == set([
                 w for w in words if levenshtein(w, word) <= n
             ])
