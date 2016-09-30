@@ -6,3 +6,4 @@ test:
 	python ./hashlist.py
 	python ./reservoir_sampling.py
 	python ./strstr.py
+	python ./levenshtein_distance.py
