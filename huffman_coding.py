@@ -1,23 +1,22 @@
+from heapq import heappush, heappop
 from collections import namedtuple
 
 
-Node = namedtuple('Node', 'value,prob,children')
+class Node(namedtuple('Node', 'prob,value,children')):
+    def __lt__(self, other):
+        return self.prob < other.prob
 
 
 def pnode(probs):
-    nodes = [Node(k, p, []) for k, p in probs.items()]
+    nodes = []
+    for value, prob in probs.items():
+        heappush(nodes, Node(prob, value, []))
     if not nodes:
         return
 
     while len(nodes) != 1:
-        nodes.sort(
-            key=lambda node: node.prob,
-            reverse=True,
-            )
-        a, b = nodes.pop(), nodes.pop()
-        node = Node(None, a.prob + b.prob, [a, b])
-        nodes.append(node)
-
+        a, b = heappop(nodes), heappop(nodes)
+        heappush(nodes, Node(a.prob + b.prob, None, [a, b]))
     return nodes[0]
 
 
