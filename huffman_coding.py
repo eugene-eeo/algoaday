@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from heapq import heappush, heappop, heapify
 from collections import namedtuple
 
 
@@ -8,12 +8,10 @@ class Node(namedtuple('Node', 'prob,value,children')):
 
 
 def pnode(probs):
-    nodes = []
-    for value, prob in probs.items():
-        heappush(nodes, Node(prob, value, []))
+    nodes = [Node(p, x, []) for x, p in probs.items()]
     if not nodes:
         return
-
+    heapify(nodes)
     while len(nodes) != 1:
         a, b = heappop(nodes), heappop(nodes)
         heappush(nodes, Node(a.prob + b.prob, None, [a, b]))
