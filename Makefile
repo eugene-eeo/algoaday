@@ -10,3 +10,4 @@ test:
 	python ./bktree.py
 	python ./huffman_coding.py
 	python ./josephus_problem.py
+	python ./expsearch.py
