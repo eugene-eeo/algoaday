@@ -106,6 +106,29 @@ class Concat:
         return self.length
 
 
+def length(node):
+    if isinstance(node, Leaf):
+        return 1
+    return length(node.left) + length(node.right)
+
+
+def depth(node):
+    if isinstance(node, Leaf):
+        return 0
+    return 1 + max(depth(node.left), depth(node.right))
+
+
+def fibo(n, m={0: 1, 1: 1}):
+    if n not in m:
+        m[n] = fibo(n-1) + fibo(n-2)
+    return m[n]
+
+
+def balanced(rope):
+    d = depth(rope)
+    return length(rope) >= fibo(d + 1)
+
+
 if __name__ == '__main__':
     r = Concat(
         Concat(Leaf('a'), Leaf('b')),
@@ -131,3 +154,7 @@ if __name__ == '__main__':
             assert r[i:j].value == v[i:j]
 
     assert r.rebalance().value == r.value
+    assert length(r.rebalance()) == length(r)
+    assert balanced(r.rebalance())
+    assert not balanced(r)
+    assert depth(r) == 4
