@@ -37,6 +37,29 @@ def random_matrix(n):
     return matrix
 
 
+def random_adjacency_list(n, celeb):
+    for i in range(n):
+        if i == celeb:
+            continue
+        peers = sample([u for u in range(n) if u != i and u != celeb],
+                       randint(1, n-2))
+        yield i, celeb
+        for j in peers:
+            yield i, j
+
+
+def search_edges(edges):
+    celebs = set()
+    normal = set()
+    for a, b in edges: # a knows b
+        celebs.discard(a)
+        normal.add(a)
+        if b not in normal:
+            celebs.add(b)
+    assert len(celebs) == 1
+    return celebs.pop()
+
+
 if __name__ == '__main__':
     for n in range(5, 100, 5):
         matrix = random_matrix(n)
@@ -45,3 +68,7 @@ if __name__ == '__main__':
         for i, row in enumerate(matrix):
             if i != celeb:
                 assert row[celeb]
+
+        celeb = randint(0, n - 1)
+        edges = random_adjacency_list(n, celeb)
+        assert search_edges(edges) == celeb
