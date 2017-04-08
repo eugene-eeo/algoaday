@@ -12,3 +12,4 @@ test:
 	python ./josephus_problem.py
 	python ./expsearch.py
 	python ./rope.py
+	python ./celebrity_search.py
