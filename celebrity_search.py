@@ -61,14 +61,13 @@ def search_edges(edges):
 
 
 if __name__ == '__main__':
-    for n in range(5, 100, 5):
-        matrix = random_matrix(n)
-        celeb = search(matrix)
-        assert all(v == 0 for v in matrix[celeb])
-        for i, row in enumerate(matrix):
-            if i != celeb:
-                assert row[celeb]
+    matrix = random_matrix(5)
+    celeb = search(matrix)
+    assert all(v == 0 for v in matrix[celeb])
+    for i, row in enumerate(matrix):
+        if i != celeb:
+            assert row[celeb]
 
-        celeb = randint(0, n - 1)
-        edges = random_adjacency_list(n, celeb)
-        assert search_edges(edges) == celeb
+    celeb = randint(0, 5 - 1)
+    edges = random_adjacency_list(5, celeb)
+    assert search_edges(edges) == celeb
