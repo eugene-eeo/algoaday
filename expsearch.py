@@ -1,4 +1,3 @@
-import random
 import bisect
 
 
@@ -13,6 +12,7 @@ def exponential_search(v, xs):
 
 
 if __name__ == '__main__':
-    a = [i for i in range(random.randint(1, 20))]
-    for i, v in enumerate(a):
-        assert exponential_search(v, a) == i
+    for n in range(1, 20 + 1):
+        a = list(range(n))
+        for i, v in enumerate(a):
+            assert exponential_search(v, a) == i

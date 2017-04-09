@@ -1,24 +1,14 @@
 from random import randint, sample
 
 
-def unique_pairs(matrix):
-    size = len(matrix)
-    for i in range(size):
-        for j in range(i + 1, size):
-            yield i, j
-
-
 def search(matrix):
-    celebs = [1] * len(matrix)
-    for x, y in unique_pairs(matrix):
-        # 1. celebrity does not know anyone else. x knows y => x is not a celebrity.
-        # 2. celebrity is known by all. x doesn't know y => y is not a celebrity.
-        x_knows_y = matrix[x][y]
-        y_knows_x = matrix[y][x]
-        celebs[x if x_knows_y else y] = 0
-        celebs[y if y_knows_x else x] = 0
-    assert celebs.count(1) == 1
-    return celebs.index(1)
+    celebs = list(range(len(matrix)))
+    while len(celebs) >= 2:
+        x = celebs.pop()
+        y = celebs.pop()
+        celebs.append(y if matrix[x][y] else x)
+    assert len(celebs) == 1
+    return celebs[0]
 
 
 def random_matrix(n):
