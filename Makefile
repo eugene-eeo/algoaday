@@ -13,3 +13,4 @@ test:
 	python ./expsearch.py
 	python ./rope.py
 	python ./celebrity_search.py
+	python ./gauss_jordan_elimination.py
