@@ -41,7 +41,7 @@ def gj_elim(M):
 
 
 def solve(M):
-    rref = gj_elim(M)
+    gj_elim(M)
     return [row[-1] for row in M]
 
 
@@ -51,9 +51,9 @@ def fractionify(M):
 
 if __name__ == '__main__':
     matrix = [
-        [3, 1, 0, 5],
-        [0, 2, 0, 7],
-        [0, 1, 1, 14],
+        [3, 1, 0, 5],   # 3x + 1y + 0z = 5
+        [0, 2, 0, 7],   # 0x + 2y + 0z = 7
+        [0, 1, 1, 14],  # 0x + 1y + 1z = 14
     ]
     fractionify(matrix)
     assert solve(matrix) == [0.5, 3.5, 10.5]
