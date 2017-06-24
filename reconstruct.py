@@ -1,6 +1,4 @@
-from collections import namedtuple
 import random
-
 
 
 class Node:
@@ -26,9 +24,6 @@ class Node:
         return self.data == other.data and \
                 self.left == other.left and \
                 self.right == other.right
-
-
-#Node = namedtuple('Node', 'data,left,right')
 
 
 def graph(node):
