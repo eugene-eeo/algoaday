@@ -15,3 +15,4 @@ test:
 	python ./celebrity_search.py
 	python ./gauss_jordan_elimination.py
 	python ./nqueens.py
+	python ./reconstruct.py
