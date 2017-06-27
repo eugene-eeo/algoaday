@@ -107,17 +107,14 @@ def full_pi(pre, inord):
 
 
 def inc_uid():
-    a = [0]
-    def inc(a=a):
+    def inc(a=[0]):
         a[0] += 1
         return a[0]
-    def peek(a=a):
-        return a[0]
-    return inc, peek
+    return inc
 
 
 def rand_tree(p=0.5, maxdepth=5):
-    inc, peek = inc_uid()
+    inc = inc_uid()
     root = mknode(inc())
     q = [root]
     while q:
