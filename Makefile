@@ -16,3 +16,4 @@ test:
 	python ./gauss_jordan_elimination.py
 	python ./nqueens.py
 	python ./reconstruct.py
+	python ./pancake_flip.py
