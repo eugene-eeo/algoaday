@@ -3,12 +3,12 @@ import bisect
 
 def exponential_search(v, xs):
     size = len(xs)
-    bound = 1
-    while bound < size and xs[bound] < v:
-        bound *= 2
+    upper = 1
+    while upper < size and xs[upper] < v:
+        upper *= 2
     return bisect.bisect_left(xs, v,
-            lo=bound // 2,
-            hi=min(bound, size))
+            lo=upper // 2,
+            hi=min(upper, size))
 
 
 if __name__ == '__main__':

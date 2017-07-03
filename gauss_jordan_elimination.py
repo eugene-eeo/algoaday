@@ -17,26 +17,26 @@ def subtract(A, B):
 
 def gj_elim(M):
     n = len(M)
-    for col in range(n):
+    for i in range(n):
         # find the first row with a nonzero column after
-        # the previous row, swap with the col-th row
-        idx = find_nonzero(M, col, col)
-        M[idx], M[col] = M[col], M[idx]
+        # the previous row, swap with the i-th row
+        idx = find_nonzero(M, i, i)
+        M[idx], M[i] = M[i], M[idx]
 
         # multiply with a value such that it will make the
-        # col-th column on the current row == 1
-        M[col] = multiply(1 / M[col][col], M[col])
-        assert M[col][col] == 1
+        # i-th column on the current row == 1
+        M[i] = multiply(1 / M[i][i], M[i])
+        assert M[i][i] == 1
 
-        # make the col-th column == 0 on all other rows
-        for i in range(n):
-            if i == col:
+        # make the i-th column == 0 on all other rows
+        for j in range(n):
+            if j == i:
                 continue
-            M[i] = subtract(
-                M[i],
-                multiply(M[i][col], M[col])
+            M[j] = subtract(
+                M[j],
+                multiply(M[j][i], M[i]),
             )
-            assert M[i][col] == 0
+            assert M[j][i] == 0
     return M
 
 
