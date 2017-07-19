@@ -17,3 +17,4 @@ test:
 	python ./nqueens.py
 	python ./reconstruct.py
 	python ./pancake_flip.py
+	python ./bitmap_intset.py

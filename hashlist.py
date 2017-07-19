@@ -4,7 +4,7 @@ from itertools import chain
 
 class Block:
     def __init__(self, content):
-        self.hash = sha256(content).hexdigest()
+        self.hash = sha256(content).digest()
         self.content = content
 
 
