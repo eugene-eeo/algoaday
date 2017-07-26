@@ -20,6 +20,7 @@ def breakdown(S):
 
 if __name__ == '__main__':
     for _ in range(1000):
-        arr = {random.randint(1, 20) for _ in range(12)}
+        u = random.randint(1, 12)
+        arr = {random.randint(1, 20) for _ in range(u)}
         S = sum(2**k for k in arr)
         assert set(breakdown(S)) == arr
