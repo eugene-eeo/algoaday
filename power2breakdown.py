@@ -12,10 +12,19 @@ def breakdown(S):
         if S % 2 == 1:
             S -= 1
             factors.append(shift)
-            continue
         S = S / 2
         shift += 1
     return factors
+
+
+def rbreakdown(S, k=0):
+    if S == 0:
+        return
+    if S % 2 == 1:
+        yield k
+        yield from rbreakdown(S - 1, k)
+        return
+    yield from rbreakdown(S / 2, k + 1)
 
 
 if __name__ == '__main__':

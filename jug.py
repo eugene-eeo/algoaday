@@ -43,7 +43,6 @@ def find_path(initial, target, ops, max_caps):
     q = deque([([], initial)])
     while q:
         path, state = q.popleft()
-        print(path, state)
         if vectors_equal(state, target):
             return path
         for op in ops:

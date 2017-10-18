@@ -66,5 +66,6 @@ if __name__ == '__main__':
     for k in range(1, 6):
         for xs in permutations(range(k)):
             xs = list(xs)
-            assert rsort(xs) == xs
-            assert sort(xs) == xs
+            xd = xs[:]
+            assert is_sorted(rsort(xs))
+            assert is_sorted(sort(xd))
