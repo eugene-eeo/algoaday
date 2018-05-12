@@ -34,8 +34,7 @@ def difference(a, b):
 if __name__ == '__main__':
     xs = {1, 4, 5}
     z = from_seq(xs)
-    for i in xs:
-        assert contains(z, i)
+    assert all(contains(z, i) for i in xs)
 
     assert not contains(z, 0)
     assert not contains(z, 6)

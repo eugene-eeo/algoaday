@@ -20,3 +20,4 @@ test:
 	python ./bitmap_intset.py
 	python ./power2breakdown.py
 	python ./jug.py
+	python ./heapheap.py

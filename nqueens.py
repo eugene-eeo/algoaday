@@ -8,6 +8,7 @@ def nqueens(n):
             for i in range(1, r):
                 ds = r - i
                 v = Q[i-1]
+                # horizontal attacks or along the diagonal
                 if v == j or (v == j + ds) or (v == j - ds):
                     legal = False
             if legal:
