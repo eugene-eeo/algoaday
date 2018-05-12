@@ -1,3 +1,30 @@
+"""
+    heapheap.py
+    ===========
+
+    Implementation of a possibly lesser known technique for O(log n)
+    time updates instead of O(n). Prerequisites:
+
+     - fixed number of elements n (not necessary, but in this implementation yes)
+     - some operation x + y that is associative
+
+    The idea is using a heap, we can calculate in O(log n) time changes
+    to a sequence of n elements X1, X2, ... Xn:
+
+                                  X1+X2+...+Xn
+                                        ▲
+                           ┌────────────┴────────────┐
+                       ...                          ...
+
+                 (X1+X2)+(X3+X4)      ...    (Xn-3+Xn-2)+(Xn-1+Xn) 
+                        ▲                               ▲
+                ┌───────┴──────┐              ┌────────┬┘
+              X1+X2          X3+X4    ...          Xn-1+Xn
+                ▲              ▲                       ▲
+          ┌─────┴─┐       ┌────┘                       └─────┐
+         X1      X2      X3            ...                   Xn
+"""
+
 import math
 from random import randint
 
