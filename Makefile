@@ -21,3 +21,4 @@ test:
 	python ./power2breakdown.py
 	python ./heapheap.py
 	python ./disjoint_set.py
+	python ./bitonic.py
