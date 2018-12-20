@@ -19,5 +19,5 @@ test:
 	python ./pancake_flip.py
 	python ./bitmap_intset.py
 	python ./power2breakdown.py
-	python ./jug.py
 	python ./heapheap.py
+	python ./disjoint_set.py

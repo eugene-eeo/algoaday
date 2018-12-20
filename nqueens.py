@@ -11,6 +11,7 @@ def nqueens(n):
                 # horizontal attacks or along the diagonal
                 if v == j or (v == j + ds) or (v == j - ds):
                     legal = False
+                    break
             if legal:
                 Q[r-1] = j
                 yield from rnq(Q, r+1)
