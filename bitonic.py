@@ -11,9 +11,7 @@ def find_min(xs):
     n = len(xs)
     i = 0       # start of asc
     d = n // 2  # step
-    j = 0
     while d > 0:
-        j += 1
         l = xs[(i-1) % n]
         c = xs[i     % n]
         r = xs[(i+1) % n]

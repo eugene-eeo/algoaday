@@ -22,3 +22,4 @@ test:
 	python ./heapheap.py
 	python ./disjoint_set.py
 	python ./bitonic.py
+	python ./fenwick_tree.py
