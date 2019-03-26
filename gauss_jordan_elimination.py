@@ -2,8 +2,8 @@ from fractions import Fraction
 
 
 def find_nonzero(M, col, min_row):
-    for i, row in enumerate(M):
-        if i >= min_row and row[col] != 0:
+    for i in range(min_row, len(M)):
+        if M[i][col] != 0:
             return i
 
 
@@ -20,23 +20,18 @@ def gj_elim(M):
     for i in range(n):
         # find the first row with a nonzero column after
         # the previous row, swap with the i-th row
-        idx = find_nonzero(M, i, i)
-        M[idx], M[i] = M[i], M[idx]
+        j = find_nonzero(M, i, i)
+        M[j], M[i] = M[i], M[j]
 
         # multiply with a value such that it will make the
         # i-th column on the current row == 1
         M[i] = multiply(1 / M[i][i], M[i])
-        assert M[i][i] == 1
 
         # make the i-th column == 0 on all other rows
         for j in range(n):
             if j == i:
                 continue
-            M[j] = subtract(
-                M[j],
-                multiply(M[j][i], M[i]),
-            )
-            assert M[j][i] == 0
+            M[j] = subtract(M[j], multiply(M[j][i], M[i]))
     return M
 
 
@@ -54,5 +49,5 @@ if __name__ == '__main__':
         [3, 1, 0, 5],   # 3x + 1y + 0z = 5
         [0, 2, 0, 7],   # 0x + 2y + 0z = 7
         [0, 1, 1, 14],  # 0x + 1y + 1z = 14
-    ])
+        ])
     assert solve(matrix) == [0.5, 3.5, 10.5]
