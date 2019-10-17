@@ -35,8 +35,7 @@ def heapheap(xs):
     # so we can start indexing at 1
     H = [None]
     H.extend(0 for _ in range(n - 1))
-    H.extend(xs)
-    H.extend(0 for _ in range(n - len(xs)))
+    H.extend(0 for _ in range(n))
     for i, v in enumerate(xs):
         update(H, i, v)
     return H
@@ -47,14 +46,15 @@ def update(heap, i, v):
     # so log(n + 1) gives us h
     h = int(math.log2(len(heap)))
     _update(heap,
-           int(math.pow(2, h - 1)) + i,
-           v)
+            int(math.pow(2, h - 1)) + i,
+            v)
     return heap[1]
 
 
 def _update(heap, i, v):
     heap[i] = v
     if i != 1:
+        # calculate parent position
         p = i // 2
         l = 2*p
         r = 2*p + 1
@@ -65,7 +65,7 @@ def _update(heap, i, v):
 
 if __name__ == '__main__':
     for _ in range(100):
-        n = randint(4, 10)
+        n = randint(4, 20)
         xs = [randint(1, 10) for _ in range(n)]
         heap = heapheap(xs)
         for _ in range(20):
